@@ -1,0 +1,24 @@
+{
+  "name": "edu-git",
+  "version": "0.9.2-alpha",
+  "description": "Script Files for Educational Purposes",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "edu-git-remote": "edu-git-remote.js",
+    "edu-git-fetch": "edu-git-fetch.js"
+  },
+  "author": "kike Agr.",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "csv-parse": "^5.0.3",
+    "dotenv": "^16.3.1",
+    "papaparse": "^5.3.1",
+    "prompt-confirm": "^2.0.4",
+    "simple-git": "^3.20.0",
+    "winston": "^3.3.3",
+    "yargs": "^17.2.1"
+  }
+}

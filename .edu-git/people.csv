@@ -1,0 +1,5 @@
+default_release_branch ,acount     ,prefix      ,suffix     ,platform       ,surname  ,name   ,
+main                   ,faiadolabs ,COURSE2324- ,-2021-dist ,git@github.com ,Martinez ,Kike   ,
+main                   ,faiadolabs ,COURSE2324- ,-2021-dist ,git@github.com ,Perez    ,Pepe   ,
+main                   ,faiadolabs ,COURSE2324- ,-2021-dist ,git@github.com ,Álvarez  ,Manolo ,
+master                 ,faiadolabs ,COURSE2324- ,-2021-dist ,git@github.com ,Inválido ,Paco   ,

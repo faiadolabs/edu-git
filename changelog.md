@@ -37,7 +37,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.9.2-alpha] - 2024-10-13
 
-Esta fue la primera versión liberada en npm, producto de unos scripts bash que fueron migrados a node y python.
+This was the first version released on npm, resulting from some bash scripts that were migrated to node and python.
 
 ### Added
 

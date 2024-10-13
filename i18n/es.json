@@ -1,0 +1,36 @@
+{
+	"Agrega los repositorios remotos a partir de un fichero csv": "Agrega los repositorios remotos a partir de un fichero csv",
+	"Elimina los repositorios remotos": "Elimina los repositorios remotos",
+	"Debes especificar un comando": "Debes especificar un comando",
+	"Fichero de importación": "Fichero de importación",
+	"Añade como rama por defecto la indicada en el fichero": "Añade como rama por defecto la indicada en el fichero",
+    "responde 'sí' para ejecución no interactiva": "responde 'sí' para ejecución no interactiva",
+    "alias o prefijo de este, de los repositorios remotos a archivar": "alias o prefijo de este, de los repositorios remotos a archivar",
+    "nombre o prefijo del nombre de la/s rama/s remota/s a archivar": "nombre o prefijo del nombre de la/s rama/s remota/s a archivar",
+    "Fuerza el actualizado de las referencias remotas": "Fuerza el actualizado de las referencias remotas",
+    "eliminar": "eliminar",
+    "fetch": {
+        "cambios": {
+		    "zero": "sin cambios",
+		    "one": "hay un cambio",
+		    "other": "hay %d cambios"
+  	    }
+    },
+    "edu_git_archive": {
+		"ejemplos": {
+			"ejemplo1": "archiva TODAS las ramas remotas que hacen referencia a los remotos nombrados con ese prefijo, creando automáticamente (sin preguntar) un bare repo (si no existiese). Fuerzo a desactivar que haga una actualización de dichas ramas remotas"
+		}
+	},
+    "archivo": {
+        "cambios": {
+		    "zero": "nada nuevo que archivar",
+		    "one": "nuevo/s cambio/s archivado/s",
+		    "other": "nuevo/s cambio/s archivado/s"
+  	    }
+    },
+	"El remoto": "El remoto",
+	"ya existe": "ya existe",
+	"Procediendo con el archivo...": "Procediendo con el archivo...",
+    "creada rama en archivo": "creada rama en archivo",
+    "no es un repositorio git": "no es un repositorio git"
+}

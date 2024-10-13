@@ -4,6 +4,8 @@ const yargs = require('yargs');
 
 const { logging } = require('./middleware/logging');
 
+const i18n = require('./helpers/translator');
+
 // procesa argumentos y ejecuta comando
 yargs
     .middleware(logging)
@@ -14,14 +16,15 @@ yargs
     .alias('s', "silent")
     .command({
         command: 'add', 
-        describe: 'Agrega los repositorios remotos a partir de un fichero csv',
+        describe: i18n.__('Agrega los repositorios remotos a partir de un fichero csv'),
         builder: parsed => {
             parsed.option('f', {
                 alias: 'file',
-                describe: 'Fichero de importación'
+                describe: i18n.__('Fichero de importación')
             })
             parsed.option('default-branch', {
-                describe: 'Añade como rama por defecto la indicada en el fichero',
+                describe: i18n.__('Añade como rama por defecto la indicada en el fichero'),
+                type: 'bool',
                 default: true,
             })
         },
@@ -29,7 +32,7 @@ yargs
     })
     .command({
         command: 'remove', 
-        describe: 'Elimina los repositorios remotos',
+        describe: i18n.__('Elimina los repositorios remotos'),
         builder: parsed => {
             parsed.option('p',{
                 alias: 'prefix',
@@ -41,6 +44,6 @@ yargs
         handler: remove,
     })
     .strict()
-    .demandCommand(1, 'Debes especificar un comando')
+    .demandCommand(1, i18n.__('Debes especificar un comando'))
     .help()
     .argv

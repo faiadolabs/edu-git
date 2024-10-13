@@ -1,0 +1,10 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "davidanson.vscode-markdownlint",
+        "shd101wyy.markdown-preview-enhanced",
+        "yzhang.markdown-all-in-one",
+        "mechatroner.rainbow-csv",
+        "gruntfuggly.todo-tree"
+    ]
+}

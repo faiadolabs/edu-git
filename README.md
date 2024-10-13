@@ -1,101 +1,85 @@
 # `edu-git`
 
-## Sobre este proyecto
+- [About this project](#about-this-project)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Automatically add remote repositories](#automatically-add-remote-repositories)
+  - [Repository synchronization](#repository-synchronization)
+- [Licence](#licence)
+- [Contact](#contact)
 
-`edu-git` es un *toolkit* o conjunto de scripts que facilitan la sincronización de repositorios bajo un supuesto ambiente académico, en el que hay una relación instructor/profesor con alumnos. Esta utilidad se basa en tener un repositorio base, donde se planteará la actividad, y un conjunto de FORKs donde se espera el trabajo desenvuelto por el alumnado.
+## About this project
 
-El toolkit `edu-git` se plantea en un conjunto de script que faciliten y automaticen las tareas más frecuentes y repetitivas, como añadir en el repositorio del instructor/profesor el resto de repositorios remotos correspondientes a todos los FORKs de los alumnos. A través de un fichero CVS, se dispondrán de los datos suficientes para realizar esta tarea así como una sucesión de scripts para realizar las operaciones más frecuentes (sincronización o fetch de ramas, checkouts con acciones asociadas, archivo de soluciones para auditoría, etc.)
+`edu-git` is a toolkit or set of scripts that facilitates the synchronization of repositories in an academic environment where there is an instructor/teacher-student relationship. This tool is based on having a base repository, where the activity will be defined, and a set of FORKs where the work done by the students is expected to be submitted.
 
-Quizá se pueda utilizar para otros propósitos, pero se insiste en el que el objeto es fundamentalmente para un ambiente académico.
+The `edu-git` toolkit consists of a set of scripts that simplify and automate the most frequent and repetitive tasks, such as adding all the students' FORK repositories as remote repositories in the instructor/teacher's repository. Through a CSV file, the necessary data will be provided to carry out this task, as well as a series of scripts to perform the most common operations (branch synchronization or fetch, checkouts with associated actions, solution archiving for auditing, etc.).
 
-- [Sobre este proyecto](#sobre-este-proyecto)
-- [Instalación](#instalación)
-- [Uso](#uso)
-  - [Añadir de forma automatizada los repositorios remotos](#añadir-de-forma-automatizada-los-repositorios-remotos)
-  - [Sincronización de los repositorios](#sincronización-de-los-repositorios)
-- [Licencia](#licencia)
-- [Contacto](#contacto)
+It may be useful for other purposes, but it is primarily designed for an academic environment.
 
-## Instalación
+## Installation
 
-Ya sea mediante clonación con git o usando npm (la forma recomendada):
+Either by cloning with git or using npm (the recommended method):
 
 ```bash
 npm install -g edu-git
 ```
 
-Se instala de forma global porque el propósito de los scripts `edu-git` es utilizarlo repositorios repartidos por diferentes paths del sistema.
+It is installed globally because the purpose of the edu-git scripts is to be used with repositories spread across different paths in the system.
 
-## Uso
+## Usage
 
-### Añadir de forma automatizada los repositorios remotos
+### Automatically add remote repositories
 
-El primer paso es añadir un conjunto más o menos grande de cadenas de conexión a repositorios remotos (generalmente serán de alumnos). Para ello, debe existir un fichero CSV con los datos necesarios para añadir estos repositorios remotos.
+The first step is to add a more or less large set of remote repository connection strings (usually from students). For this, there must be a CSV file with the necessary data to add these remote repositories.
 
-El fichero estárá ubicado por defecto en la ruta interna del propio reto exactamente con este nombre `.git/people.csv`. Un ejemplo de este fichero podría ser:
+The file will be located by default in the internal path of the repository with the exact name `.git/people.csv`. An example of this file could be:
 
 ```csv
-default_release_branch ,acount     ,prefix      ,suffix     ,platform       ,surname  ,name   ,
-main                   ,faiadolabs ,COURSE2324- ,-2021-dist ,git@github.com ,Martinez ,Kike   ,
-main                   ,faiadolabs ,COURSE2324- ,-2021-dist ,git@github.com ,Perez    ,Pepe   ,
-main                   ,faiadolabs ,COURSE2324- ,-2021-dist ,git@github.com ,Álvarez  ,Manolo ,
-master                 ,faiadolabs ,COURSE2324- ,-2021-dist ,git@github.com ,Inválido ,Paco   ,
+default_release_branch ,acount     ,prefix      ,suffix, platform       ,surname  ,name   ,
+main                   ,student01 ,COURSE1920- ,-dist  , git@github.com ,Martinez ,Kike   ,
+main                   ,student02 ,COURSE1920- ,-dist  , git@github.com ,Perez    ,Pepe   ,
+main                   ,student03 ,COURSE1920- ,-dist  , git@github.com ,Álvarez  ,Manolo ,
+master                 ,student04 ,COURSE1920- ,-dist  , git@github.com ,Inválido ,Paco   ,
 ```
 
-En este fichero se pueden ver los campos necesarios evitentes para realizar una sincronización de un repo con sus remotos, y además, un campo denominado como `default_release_branch`, que será la rama por defecto en la que los alumnos dejen planteada su propia solución, su propia *release branch* o *rama de entrega*.
+In this file, you can see the necessary fields to synchronize a repository with its remotes, as well as a field named `default_release_branch`, which will be the default branch where students submit their own solution, their own release branch or delivery branch.
 
-Un consejo sobre la generación de este fichero es que sea creado por los propios alumnos en una hoja de cálculo colaborativa en una Hoja de Cálculo de Google para que esta luego sea exportada en formato `.csv`. La *rama de entrega* o *release branch* por otra parte, conviene que sea con un formato normalizado. Por ejemplo `rb/nameSurname/develop`.
+A tip for generating this file is to have it created by the students themselves in a collaborative spreadsheet, such as a Google Sheet, which can then be exported in `.csv` format. The delivery branch or release branch, on the other hand, should follow a standardized format. For example, `rb/nameSurname/develop`.
 
-El script utilizado en este caso será `edu-git-remote` y se podrá consultar su uso con la opción `--help`, empleando esta para su uso general o para su subcomando específico en particular:
+The script used in this case will be `edu-git-remote`, and its usage can be checked with the `--help` option, either for general use or for a specific subcommand in particular:
 
 ```bash
 # edu-git remote --help
 edu-git-remote <command> [args]
 
 Comandos:
-  edu-git-remote add     Agrega los repositorios remotos a partir de un fichero
-                         csv
-  edu-git-remote remove  Elimina los repositorios remotos
+  edu-git-remote add     Add remote repositories from a file
+  edu-git-remote remove  Delete remote repositories
 
 Opciones:
-  --version  Muestra número de versión                                [booleano]
-  --help     Muestra ayuda                                            [booleano]
+  --version  Show versión installed                               [booleano]
+  --help     Show help                                            [booleano]
 ```
 
-```bash
-# edu-git remote add --help
-edu-git-remote add
-
-Agrega los repositorios remotos a partir de un fichero csv
-
-Opciones:
-      --version         Muestra número de versión                     [booleano]
-      --help            Muestra ayuda                                 [booleano]
-  -f, --file            Fichero de importación
-      --default-branch  Añade como rama por defecto la indicada en el fichero
-```
-
-
-
-A continuación y partiendo de un repositorio donde se plantee un ejercicio académico, y se deseen añador los FORKs de los alumnos se realizaría la siguiente operación:
+Next, starting from a repository where an academic exercise is defined and you want to add the students' FORKs, the following operation would be performed:
 
 ```bash
-# Situándose por ejemplo en ~/git/programming-exercise-01/
+# For example, being in ~/git/programming-exercise-01/
 edu-git-remote add
 ```
 
-El resultado que arrojaría el script es:
+The result produced by the script is:
 
 ```txt
-[ADDED] git remote add COURSE2324-MartinezKike ssh://git@github.com/faiadolabs/programming-exercise-01
-[ADDED] git remote add COURSE2324-PerezPepe ssh://git@github.com/faiadolabs/programming-exercise-01
-[ADDED] git remote add COURSE2324-ÁlvarezManolo ssh://git@github.com/faiadolabs/programming-exercise-01
-[ADDED] git remote add COURSE2324-InválidoPaco ssh://git@github.com/faiadolabs/programming-exercise-01
+[ADDED] git remote add COURSE1920-MartinezKike ssh://git@github.com/student01/programming-exercise-01
+[ADDED] git remote add COURSE1920-PerezPepe ssh://git@github.com/student02/programming-exercise-01
+[ADDED] git remote add COURSE1920-ÁlvarezManolo ssh://git@github.com/student03/programming-exercise-01
+[ADDED] git remote add COURSE1920-InválidoPaco ssh://git@github.com/student04/programming-exercise-01
 ```
 
-### Sincronización de los repositorios
+### Repository synchronization
 
-Una vez añadidas las cadenas de conexión a los repositorios remotos, se puede proceder a la sincronización con el siguiente script:
+Once the connection strings have been added to the remote repositories, synchronization can be carried out with the following script:
 
 ```bash
 # edu-git-fetch --help
@@ -108,27 +92,27 @@ Opciones:
       --help     Muestra ayuda                                        [booleano]
 ```
 
-Para realizar una sincronización básica:
+To perform basic synchronization:
 
 ```bash
-# Situándose por ejemplo en ~/git/programming-exercise-01/
+# For example, being in ~/git/programming-exercise-01/
 edu-git-fetch
 ```
 
 ```bash
-[REF] git remote update COURSE2324-InválidoPaco
-[FETCHED] git remote update COURSE2324-MartinezKike
-[FETCHED] git remote update COURSE2324-PerezPepe
-[FETCHED] git remote update COURSE2324-ÁlvarezManolo
+[REF] git remote update COURSE1920-InválidoPaco
+[FETCHED] git remote update COURSE1920-MartinezKike
+[FETCHED] git remote update COURSE1920-PerezPepe
+[FETCHED] git remote update COURSE1920-ÁlvarezManolo
 [FETCHED] git remote update origin
 ```
 
-Nótese que en la salida se puede apreciar la correcta sincronización o no de cada uno de los remotos. Puede haberse sincronizado (`FETCHED`), hacer fallado por credenciales o mala cadena de conexión (`FAIL`) o puede haberse producido la conexión pero no ser posible la sincronización de la rama por un problema de nombrado de esta (`[REF]`)
+Note that the output shows whether each remote has been correctly synchronized or not. It may have synchronized (`FETCHED`), failed due to credentials or an incorrect connection string (`FAIL`), or the connection may have been made but synchronization of the branch was not possible due to a naming issue (`REF`).
 
-## Licencia
+## Licence
 
-MIT especificada en [LICENCE.txt](./LICENSE.txt)
+MIT especificada en [LICENCE.txt](LICENSE.txt)
 
-## Contacto
+## Contact
 
 Project Link: [https://github.com/faiadolabs/edu-git](https://github.com/faiadolabs/edu-git)

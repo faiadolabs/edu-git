@@ -1,0 +1,118 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "remote add",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/edu-git-remote.js",
+            "cwd": "${workspaceFolder}/",
+            "args": [ "add", 
+                "--file", "${workspaceFolder}/.edu-git/people.csv",
+                // "--help",
+                // "--silent"
+            ]
+        },
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "remote remove",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/edu-git-remote.js",
+            "cwd": "${workspaceFolder}/",
+            "args": [ 
+                "remove",
+                "--prefix", "COURSE2324-",
+                "--yes",
+                // "--help",
+                // "--verbose",
+            ]
+        },
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "fetch",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/edu-git-fetch.js",
+            "cwd": "${workspaceFolder}/",
+            "args": [
+                "--prefix", "COURSE2324-",
+                // "--help",
+                // "-vvv", // debug
+                // "--branch", "rb/enriqueAgrasar/develop",
+            ]
+        },
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "archive",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/edu-git-archive.js",
+            "cwd": "${workspaceFolder}/",
+            "args": [
+                "--yes",
+                "--remote", "COURSE",
+                // "--branch", "rb",
+                // "--no-fetch",
+                // "--fetch",
+                // "--help",
+                // "-vvv", // debug
+            ]
+        },
+
+        {
+            "type": "debugpy",
+            "request": "launch",
+            "name": "sync",
+            // "skipFiles": [
+            //     "<node_internals>/**"
+            // ],
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/edu-git-sync.py",
+            "cwd": "${workspaceFolder}/",
+            "args": [
+                // "--prefix", "COURSE2324-",
+                // "--help"
+                // "-vvv", // debug
+                // "--branch", "rb",
+            ]
+        },
+
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "app",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "console": "integratedTerminal",
+            "program": "${workspaceFolder}/app.js",
+            "cwd": "${workspaceFolder}/",
+            "args": [ 
+                "remove",
+                "--prefix", "COURSE",
+                // "--yes",
+            ]
+        },
+    ]
+}

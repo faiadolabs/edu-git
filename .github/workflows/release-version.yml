@@ -18,17 +18,23 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Increase version
+      - name: Configure git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          npm version preminor --preid=alpha
+        
+      - name: Install dependencies
+        run: npm install
+
+      - name: Check for changes
+        run: |
+          git add package-lock.json
+          git commit -m "Update package-lock.json" || echo "No changes to commit"
+
+      - name: Increase version
+        run: npm version preminor --preid=alpha
 
       - name: Push changes
-        # Necesario: Settings -> Actions -> General -> Workflow permissions -> Read and write permissions
         run: |
           git push --follow-tags
         env:

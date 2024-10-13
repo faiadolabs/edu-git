@@ -1,0 +1,36 @@
+{
+	"Agrega los repositorios remotos a partir de un fichero csv": "Add remote repositories from a csv file",
+	"Elimina los repositorios remotos": "Delete remote repositories",
+	"Debes especificar un comando": "You must specify a command",
+	"Fichero de importación": "Import file",
+	"Añade como rama por defecto la indicada en el fichero": "Add as default branch the one indicated in the file",
+	"responde 'sí' para ejecución no interactiva": "respond 'yes' for non-interactive execution",
+	"alias o prefijo de este, de los repositorios remotos a archivar": "alias or prefix of this, of the remote repositories to archive",
+	"nombre o prefijo del nombre de la/s rama/s remota/s a archivar": "name or prefix of the name of the remote branches to archive",
+	"Fuerza el actualizado de las referencias remotas": "Force the update of remote references",
+	"eliminar": "delete",
+	"fetch": {
+		"cambios": {
+			"zero": "there are no changes",
+			"one": "there is one change",
+			"other": "there are %d changes"
+		}
+	},
+	"edu_git_archive": {
+		"ejemplos": {
+			"ejemplo1": "archives ALL remote branches that reference the remotes named with that prefix, automatically creating (without asking) a bare repo (if it does not exist). Forces disabling the update of those remote branches"
+		}
+	},
+	"archivo": {
+		"cambios": {
+			"zero": "no new changes to archive",
+			"one": "new changes archived",
+			"other": "new changes archived"
+		}
+	},
+	"El remoto": "The remote",
+	"ya existe": "already exists",
+	"Procediendo con el archivo...": "Proceeding with the archive...",
+	"creada rama en archivo": "branch created in archive",
+	"no es un repositorio git": "not a git repository"
+}

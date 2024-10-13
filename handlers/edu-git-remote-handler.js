@@ -1,7 +1,8 @@
 const cvsParser = require('../helpers/parser-cvs');
 const chalk = require('chalk');
 const Confirm = require('prompt-confirm');
-const { git, git_path, gitStates } = require('../helpers/git');
+const i18n = require('../helpers/translator');
+const { git, git_path, gitStates, sumarize } = require('../helpers/git');
 
 async function add( argv ){
     const { file, defaultBranch } = argv;
@@ -20,7 +21,11 @@ async function add( argv ){
 
         try {
             repo.cmd = `git remote add ${alias} ${uri}`;
-            await repo.addRemote(alias, uri, options);
+            await repo.addRemote(alias, uri, options).then( (sumary, a, b, c) => { 
+                sumarize(null, repo.cmd, sumary)} 
+            ).catch((error) => { 
+                sumarize(error, repo.cmd)}
+            );
         } catch ( {message} ) {
             continue;
         }
@@ -38,13 +43,17 @@ async function remove( argv ){
 
         // Si la opción --yes no está explícitamente como argunmento => pregunta
         if(!yes){
-            const answer = await new Confirm(`eliminar ${alias}?`).run();
+            const answer = await new Confirm(`${i18n.__('eliminar')} ${alias}?`).run();
             if(!answer) continue;
         }
 
         try {
             repo.cmd = `git remote remove ${alias}`;
-            await repo.removeRemote(alias);
+            await repo.removeRemote(alias).then( (sumary, a, b, c) => { 
+                sumarize(null, repo.cmd, sumary)} 
+            ).catch((error) => { 
+                sumarize(error, repo.cmd)}
+            );
         } catch ( {message} ) {
             continue;
         }

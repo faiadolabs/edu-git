@@ -7,7 +7,10 @@
   },
   "bin": {
     "edu-git-remote": "edu-git-remote.js",
-    "edu-git-fetch": "edu-git-fetch.js"
+    "edu-git-fetch": "edu-git-fetch.js",
+    "edu-git-checkout": "edu-git-checkout.js",
+    "edu-git-archive": "edu-git-archive.js",
+    "edu-git-sync": "edu-git-sync.py"
   },
   "author": "kike Agr.",
   "license": "MIT",
@@ -15,6 +18,7 @@
     "chalk": "^4.1.2",
     "csv-parse": "^5.0.3",
     "dotenv": "^16.3.1",
+    "i18n": "^0.15.1",
     "papaparse": "^5.3.1",
     "prompt-confirm": "^2.0.4",
     "simple-git": "^3.20.0",

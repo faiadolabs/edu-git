@@ -2,7 +2,7 @@
 const yargs = require('yargs');
 const { fetch } = require('./handlers/edu-git-fetch-handler');
 const { logging } = require('./middleware/logging');
-
+const i18n = require('./helpers/translator');
 
 // Define una función asíncrona principal. Necesaria por asincronía
 const main = async () => {
@@ -10,7 +10,7 @@ const main = async () => {
     const argv = await yargs
         .middleware(logging)
         .scriptName("edu-git-fetch")
-        .usage('$0 <command> [args]')
+        .usage('$0 [options]')
         .count('verbose')
         .alias('v', 'verbose')
         .alias('s', "silent")
@@ -23,7 +23,7 @@ const main = async () => {
             },
         })
         .strict()
-        .demandCommand(0, 'Debes especificar un comando')
+        .demandCommand(0, i18n.__('Debes especificar un comando'))
         .help()
         .argv
 

@@ -1,0 +1,15 @@
+# Evitaré duplicidad en los títulos
+# FIXME: No se puede activar la regla MD024 en el archivo y que funcione la excepción en el override
+MD024: false
+
+# Gestionaré yo mismo el tamaño de las líneas
+MD013: false
+
+# Excepciones de reglas markdown
+overrides:
+  files:
+    - changelog.md
+  rules:
+  # Excepción a la duplicidad en los títulos por necesidad en el change log (added, changed, etc...)
+    MD024: false
+

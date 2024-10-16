@@ -1,0 +1,36 @@
+{
+    "Agrega los repositorios remotos a partir de un fichero csv": "Adiciona os repositórios remotos a partir de um arquivo csv",
+    "Elimina los repositorios remotos": "Elimina os repositórios remotos",
+    "Debes especificar un comando": "Deve especificar um comando",
+    "Fichero de importación": "Arquivo de importação",
+    "Añade como rama por defecto la indicada en el fichero": "Adiciona como ramo padrão o indicado no arquivo",
+    "responde 'sí' para ejecución no interactiva": "responde 'sim' para execução não interativa",
+    "alias o prefijo de este, de los repositorios remotos a archivar": "alias ou prefixo deste, dos repositórios remotos a arquivar",
+    "nombre o prefijo del nombre de la/s rama/s remota/s a archivar": "nome ou prefixo do nome do/s ramo/s remoto/s a arquivar",
+    "Fuerza el actualizado de las referencias remotas": "Força a atualização das referências remotas",
+    "eliminar": "eliminar",
+    "fetch": {
+        "cambios": {
+            "zero": "sem mudanças",
+            "one": "há uma mudança",
+            "other": "há %d mudanças"
+          }
+    },
+    "edu_git_archive": {
+        "ejemplos": {
+            "ejemplo1": "arquiva TODAS as ramificações remotas que fazem referência aos remotos nomeados com esse prefixo, criando automaticamente (sem perguntar) um repositório bare (se não existisse). Força a desativar a atualização dessas ramificações remotas"
+        }
+    },
+    "archivo": {
+        "cambios": {
+            "zero": "nada novo para arquivar",
+            "one": "novo/s mudança/ões arquivada/s",
+            "other": "novo/s mudança/ões arquivada/s"
+          }
+    },
+    "El remoto": "O remoto",
+    "ya existe": "já existe",
+    "Procediendo con el archivo...": "Procedendo com o arquivamento...",
+    "creada rama en archivo": "ramo criado no arquivo",
+    "no es un repositorio git": "não é um repositório git"
+}

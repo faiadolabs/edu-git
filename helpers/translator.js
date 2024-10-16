@@ -8,7 +8,7 @@ const path = require('path');
  * create a new instance with it's configuration
  */
 const i18n = new I18n({
-  locales: ['en', 'es'],
+  locales: ['en', 'es', 'pt'],
   directory: path.join(__dirname, '../i18n'),
   objectNotation: true
 })

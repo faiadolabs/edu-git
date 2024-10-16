@@ -1,6 +1,6 @@
 {
   "name": "edu-git",
-  "version": "0.10.0-alpha.0",
+  "version": "0.11.0-alpha.0",
   "description": "Script Files for Educational Purposes",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

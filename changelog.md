@@ -13,12 +13,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- [ ] Portuguese translation.
 - [ ] German Translation
 - [ ] Italian translation
 - [ ] French translation
 - [ ] Script `edu-git-checkout`
 - [ ] yaml people spectification
+
+### Fixed
+
+- [x] `edu-git-fetch` did not indicate the non-existent ref error
+
+## [0.11.0-alpha.0] - 2024-10-16
+
+### Added
+
+- Portuguese translation.
 
 ## [0.10.0-alpha.0] - 2024-10-13
 

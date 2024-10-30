@@ -19,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - [ ] Script `edu-git-checkout`
 - [ ] yaml people spectification
 
-## [0.12.0] - 2024-10-30
+## [0.11.0] - 2024-10-30
 
 ### Fixed
 

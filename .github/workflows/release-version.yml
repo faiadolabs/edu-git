@@ -26,33 +26,22 @@ jobs:
       - name: Authenticate with npm
         run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Publish to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Check for changes
-        run: |
-          git add package-lock.json
-          git commit -m "Update package-lock.json" || echo "No changes to commit"
-
       - name: Show source branch
         run: |
           echo "La rama que provoca el pull request es: ${{ github.head_ref }}"
 
       - name: Increase version (minor)
-        if: github.ref == 'refs/heads/rb/next/minor'
+        if: github.head_ref == 'refs/heads/rb/next/minor'
         run: npm version minor
   
       - name: Increase version (patch)
-        if: github.ref == 'refs/heads/rb/next/patch'
+        if: github.head_ref == 'refs/heads/rb/next/patch'
         run: npm version patch
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Push changes
         run: |

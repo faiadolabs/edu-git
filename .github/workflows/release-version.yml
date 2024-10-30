@@ -3,7 +3,7 @@ name: release version
 on:
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   release-version:
@@ -30,21 +30,24 @@ jobs:
         run: |
           echo "La rama que provoca el pull request es: ${{ github.head_ref }}"
 
-      - name: Increase version (minor)
-        if: github.head_ref == 'refs/heads/rb/next/minor'
-        run: npm version minor
-  
-      - name: Increase version (patch)
-        if: github.head_ref == 'refs/heads/rb/next/patch'
-        run: npm version patch
-
-      - name: Publish to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
+      - name: Increase version based on branch
+        run: |
+          if [ "${GITHUB_HEAD_REF}" = "rb/next/minor" ]; then
+            npm version minor
+          elif [ "${GITHUB_HEAD_REF}" = "rb/next/patch" ]; then
+            npm version patch
+          else
+            echo "Branch no coincide con rb/next/minor ni rb/next/patch. Se interrumpe el workflow."
+            exit 1
+          fi
+          
       - name: Push changes
         run: |
           git push --follow-tags
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

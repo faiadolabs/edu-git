@@ -21,7 +21,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 
-- [x] `edu-git-fetch` did not indicate the non-existent ref error
+- [x] `edu-git-fetch` did not indicate the non-existent ref error (iss #4)
+- [x] Path del repo de archivo bare (iss #6)
 
 ## [0.11.0-alpha.0] - 2024-10-16
 
@@ -43,10 +44,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - CLI outputs improvements (refactoring colorize, sumarize...)
 - gitStates colors
-
-### Fixed
-
-- [x] Path del repo de archivo bare (iss #6)
 
 ## [0.9.2-alpha] - 2024-10-13
 

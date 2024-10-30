@@ -6,7 +6,7 @@ const { getLogger } = require('../helpers/logger');
 const i18n = require('../helpers/translator');
 const { exit } = require('process');
 
-const bare_repos_path = "../archive2";
+const bare_repos_path = "../archive";
 const bare_repo_name = "archive";
 
 async function archive(argv) {

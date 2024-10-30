@@ -1,9 +1,9 @@
 name: release version
 
 on:
-  push:
+  pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   release-version:
@@ -22,9 +22,20 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-        
+
+      - name: Authenticate with npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
       - name: Install dependencies
         run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Check for changes
         run: |
@@ -36,11 +47,11 @@ jobs:
           echo "La rama que provoca el pull request es: ${{ github.head_ref }}"
 
       - name: Increase version (minor)
-        if: github.head_ref == 'refs/heads/rb/next/minor'
+        if: github.ref == 'refs/heads/rb/next/minor'
         run: npm version minor
-
+  
       - name: Increase version (patch)
-        if: github.head_ref == 'refs/heads/rb/next/patch'
+        if: github.ref == 'refs/heads/rb/next/patch'
         run: npm version patch
 
       - name: Push changes

@@ -31,8 +31,17 @@ jobs:
           git add package-lock.json
           git commit -m "Update package-lock.json" || echo "No changes to commit"
 
-      - name: Increase version
-        run: npm version preminor --preid=alpha
+      - name: Show source branch
+        run: |
+          echo "La rama que provoca el pull request es: ${{ github.head_ref }}"
+
+      - name: Increase version (minor)
+        if: github.head_ref == 'refs/heads/rb/next/minor'
+        run: npm version minor
+
+      - name: Increase version (patch)
+        if: github.head_ref == 'refs/heads/rb/next/patch'
+        run: npm version patch
 
       - name: Push changes
         run: |

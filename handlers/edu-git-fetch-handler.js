@@ -21,7 +21,8 @@ async function fetch(argv) {
             await repo.fetch(alias, branch_for_fetch)
             .then( (sumary, a, b, c) => { 
                 sumarize(null, repo.cmd, sumary)} 
-            ).catch((error) => { 
+            ).catch((error) => {
+                error.branch = branch_for_fetch;
                 sumarize(error, repo.cmd)}
             );
             
@@ -47,7 +48,12 @@ async function sumarize(error, cmd, sumary){
             cambios = `(${i18n.__n('fetch.cambios', sumary.updated.length)})`;
             commit = `(${sumary.updated[0].to})`;
         }
-    } else stage = gitStates.stateFAIL;
+    } else {
+        // Evalúo tipo de error
+        stage = error.message.includes(error.branch) ?
+            gitStates.stateREF : 
+            gitStates.stateFAIL;
+    }
 
     getLogger().info(`${stage}\`${cmd}\` ${commit} ${cambios}`);
 }

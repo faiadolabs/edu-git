@@ -35,6 +35,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CLI outputs improvements (refactoring colorize, sumarize...)
 - gitStates colors
 
+### Fixed
+
+- [x] Path del repo de archivo bare (iss #6)
+
 ## [0.9.2-alpha] - 2024-10-13
 
 This was the first version released on npm, resulting from some bash scripts that were migrated to node and python.
